@@ -1,7 +1,7 @@
 # echo-swagger-embed
 
 
-echo middleware to automatically deliver RESTful API documentation
+echo handler to embed swagger-ui
 
 Current default swagger-ui version used: 3.51.0
 
@@ -16,7 +16,7 @@ $ go get -u github.com/jcheyer/echo-swagger-embed
 
 2. Import following in your code:
 ```go
-import "github.com/jcheyer/echo-swagger-embed"
+import echoswaggerembed "github.com/jcheyer/echo-swagger-embed"
 ```
 
 ### Example:
@@ -26,7 +26,7 @@ package main
 
 import (
     _ "embed"
-	"github.com/labstack/echo/v4"
+    "github.com/labstack/echo/v4"
     echoswaggerembed "github.com/jcheyer/echo-swagger-embed"
 )
 
@@ -35,14 +35,14 @@ var specs []byte
 
 
 func main() {
-	e := echo.New()
+    e := echo.New()
 
     r := bytes.NewReader(specs)
     swagger := echoswaggerembed.New(echoswaggerembed.WithSpecs(r))
 
-	e.GET("/swagger/*", swagger.Handle)
+    e.GET("/swagger/*", swagger.Handle)
 
-	e.Logger.Fatal(e.Start(":8080"))
+    e.Logger.Fatal(e.Start(":8080"))
 }
 
 ```
