@@ -1,5 +1,7 @@
 # echo-swagger-embed
 
+[![Go Report Card](https://goreportcard.com/badge/github.com/jcheyer/echo-swagger-embed)](https://goreportcard.com/report/github.com/jcheyer/echo-swagger-embed)
+
 
 echo handler to embed swagger-ui
 
