@@ -10,18 +10,21 @@ import (
 type Option func(s *Swagger)
 
 type Swagger struct {
-	Prefix  string
-	URL     string
-	Version string
-	index   *template.Template
-	Specs   string
+	index       *template.Template
+	Specs       string
+	URL         string
+	Version     string
+	DeepLinking bool
+	TryItOut    bool
 }
 
 func New(options ...Option) *Swagger {
 	swagger := &Swagger{
-		URL:     "doc.json",
-		Version: "3.51.0",
-		Specs:   "",
+		URL:         "doc.json",
+		Version:     "3.51.0",
+		Specs:       "",
+		DeepLinking: true,
+		TryItOut:    false,
 	}
 
 	for _, o := range options {
@@ -98,7 +101,8 @@ const indexTemplate = `<!-- HTML for static distribution bundle build -->
       const ui = SwaggerUIBundle({
         url: "{{.URL}}",
         dom_id: '#swagger-ui',
-        deepLinking: true,
+        deepLinking: {{.DeepLinking}},
+        tryItOutEnabled: {{.TryItOut}},
         presets: [
           SwaggerUIBundle.presets.apis,
           SwaggerUIStandalonePreset
