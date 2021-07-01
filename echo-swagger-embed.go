@@ -101,8 +101,8 @@ const indexTemplate = `<!-- HTML for static distribution bundle build -->
       const ui = SwaggerUIBundle({
         url: "{{.URL}}",
         dom_id: '#swagger-ui',
-        deepLinking: {{.DeepLinking}},
-        tryItOutEnabled: {{.TryItOut}},
+        deepLinking:{{.DeepLinking}},
+        tryItOutEnabled:{{.TryItOut}},
         presets: [
           SwaggerUIBundle.presets.apis,
           SwaggerUIStandalonePreset
