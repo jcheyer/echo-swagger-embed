@@ -33,7 +33,6 @@ import (
 //go:embed swagger.yaml
 var specs []byte
 
-
 func main() {
     e := echo.New()
 
